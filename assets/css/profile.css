@@ -770,6 +770,16 @@ h1 {
 .gallery {
   margin-top: 28px;
 }
+.noscript-gallery {
+  margin-top: 24px;
+  display: grid;
+  gap: 10px;
+}
+.noscript-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .gallery-title {
   font-size: 12px;
   font-weight: 500;

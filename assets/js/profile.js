@@ -78,10 +78,9 @@
   const mountGallery = (mount, supplied, key) => {
     if (!supplied.length) return;
     const entries = supplied.map((item) => ({ ...item, revealed: false }));
-    const gallery = make("section", "gallery");
+    const gallery = make("div", "gallery");
     const heading = make("h3", "gallery-title", "Gallery");
     heading.id = `${key}-gallery-title`;
-    gallery.setAttribute("aria-labelledby", heading.id);
     gallery.append(heading);
     const track = make("div", "gallery-track");
     track.id = `${key}-gallery`;
@@ -91,6 +90,7 @@
       const frame = make("figure", "gallery-item");
       const show = () => {
         frame.replaceChildren();
+        frame.removeAttribute("aria-label");
         const imageButton = button("image-button", "", () =>
           open(item, entries, imageButton),
         );
@@ -123,7 +123,7 @@
         const cover = make("div", "spoiler");
         if (item.warning)
           cover.append(make("p", "spoiler-label", item.warning));
-        cover.append(make("p", "", "セリフ・ストーリーのネタバレを含みます"));
+        cover.append(make("p", "", "ネタバレを含む画像です"));
         cover.append(
           button("", "内容を確認して表示する", () => {
             item.revealed = true;
@@ -142,9 +142,10 @@
     if (entries.length > 1) {
       const controls = make("div", "gallery-controls");
       const count = make("span", "", `1 / ${entries.length}`);
+      const gap = () => parseFloat(getComputedStyle(track).columnGap) || 0;
       count.setAttribute("aria-live", "polite");
       const scroll = (delta) => {
-        const width = track.children[0].getBoundingClientRect().width + 12;
+        const width = track.children[0].getBoundingClientRect().width + gap();
         const next = Math.max(
           0,
           Math.min(
@@ -170,14 +171,15 @@
         make("p", "gallery-hint", "横にスワイプ ／ 画像をタップして拡大"),
       );
       const update = () => {
-        const width = track.children[0].getBoundingClientRect().width + 12;
+        const width = track.children[0].getBoundingClientRect().width + gap();
         const index = Math.round(track.scrollLeft / width);
         count.textContent = `${index + 1} / ${entries.length}`;
         prev.disabled = index === 0;
         next.disabled = index === entries.length - 1;
       };
       track.addEventListener("scroll", update, { passive: true });
-      new ResizeObserver(update).observe(track);
+      if ("ResizeObserver" in window) new ResizeObserver(update).observe(track);
+      update();
     } else gallery.append(make("p", "gallery-hint", "画像をタップして拡大"));
     mount.append(gallery);
   };
