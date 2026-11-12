@@ -1,7 +1,10 @@
 # Profile
 
-のどか（[@nodoka_twst](https://x.com/nodoka_twst)）のプロフィールサイト。
-ビルド不要・外部ライブラリ不要の HTML / CSS / JavaScript です。
+のどか（[@nodoka_twst](https://x.com/nodoka_twst)）のプロフィールサイトです。
+ビルド不要で、外部ライブラリを使わない HTML / CSS / JavaScript で作っています。
+
+公開URL: https://nagomi-room.github.io/profile/nodoka/
+（ルートの https://nagomi-room.github.io/profile/ からも移動します）
 
 ## 構成
 
@@ -9,25 +12,25 @@
 index.html                 のどかページへの入口
 nodoka/
   index.html               のどかの本文
-  profile.js               のどかの画像設定
-  images/                  確認済みの画像のみを保存
+  profile.js               のどかのギャラリー設定
+  images/                  掲載画像
 assets/
   css/profile.css          共通デザイン・レスポンシブ対応
-  js/profile.js            共通ギャラリー・拡大・ネタバレ制御
-docs/content-status.md     素材と本文の確認状況
+  js/profile.js            共通ギャラリー・拡大表示・ネタバレ制御
+docs/content-status.md     本文・画像の出典と一覧
 AGENTS.md                  開発方針
 .github/workflows/pages.yml
 ```
 
-将来は `account-name/index.html` と個別の `profile.js`、`images/` を追加し、共通CSS・JSを参照します。各プロフィール間へのリンクは設置しません。ルートの入口は現在の「のどか」を維持できます。
+アカウントを追加するときは、`account-name/index.html` と、そのアカウント用の `profile.js`・`images/` を作り、共通の CSS・JS を参照します。各プロフィール間にはリンクを置きません。
 
 ## 本文と画像
 
-本文と画像は既存リトリン（https://lit.link/nodoka_twst ）から 2026-11-12 に移行しました。移行内容・画像一覧・未確認事項は [docs/content-status.md](docs/content-status.md) を確認してください。リトリンにない個人情報・好み・交流条件は追加していません。
+出典・画像一覧・未確認事項は [docs/content-status.md](docs/content-status.md) にまとめています。
 
-本文は `nodoka/index.html` を直接編集します。単独の画像は `<a class="zoom" href="images/…" data-zoom><img …></a>` の形で置くと、JavaScript 有効時は拡大ダイアログ、無効時は画像ファイルへのリンクになります。
-
-ギャラリー画像は `nodoka/images/` に置き、`nodoka/profile.js` の配列に追加します。
+- **本文**: `nodoka/index.html` を直接編集します。
+- **単独の画像**: `<a class="zoom" href="images/…" data-zoom><img …></a>` の形で置きます。JavaScript が有効なら拡大ダイアログで開き、無効なら画像ファイルへのリンクとして働きます。
+- **ギャラリー画像**: `nodoka/images/` に置き、`nodoka/profile.js` の配列に追加します。
 
 ```js
 window.ProfileGalleries.mount({
@@ -39,20 +42,30 @@ window.ProfileGalleries.mount({
 });
 ```
 
-セリフ・ストーリー画像は `spoiler: true` とし、`warning` に内容を含まない警告ラベル（例：⚠️7章ネタバレ）を入れます。初期状態では画像要素を作成せず、説明文・拡大表示にも内容を出しません。明示的に表示した画像だけを拡大の前後操作に含めます。「隠す」またはページ再読み込みで非表示に戻ります。画像は適切な WebP/JPEG/PNG に圧縮し、用途に応じて横幅 1200–1800px 程度を目安にしてください。確認していない代替画像は使いません。
+### ネタバレ画像
 
-JavaScript が無効でも本文とリンクは読めます。ギャラリーは JavaScript が必要です。ダイアログ非対応ブラウザーでは画像を新しいタブで開きます。
+セリフやストーリーの画像は `spoiler: true` にし、`warning` には内容に触れない警告ラベル（例：⚠️7章ネタバレ）を入れます。
+
+- **表示前**: 画像要素も alt もキャプションも作りません。拡大表示の前後送りにも含めません。
+- **表示ボタンを押したとき**: その画像をそのまま拡大表示します。閉じると、ギャラリー内のその画像に操作位置（フォーカス）が戻ります。
+- **再び隠す**: 「ネタバレ画像を隠す」を押すか、ページを再読み込みすると隠れます。
+
+### JavaScript が無効なとき
+
+本文・単独画像・ネタバレでないギャラリー画像は、`<noscript>` 内のリンクとして表示されます。ネタバレ画像は表示されません。`dialog` 要素に対応していないブラウザーでは、画像を新しいタブで開きます。
+
+### 画像の形式
+
+WebP などに圧縮して置きます。元画像より大きく引き伸ばしたり、確認していない代わりの画像を使ったりはしません。
 
 ## ローカル確認
 
-リポジトリの親ディレクトリから `python3 -m http.server 8000` を実行し、`http://localhost:8000/profile/nodoka/` を開きます。GitHub Pages の `/profile/` と同じ相対パスで確認できます。
+リポジトリの親ディレクトリで `python3 -m http.server 8000` を実行し、`http://localhost:8000/profile/nodoka/` を開きます。公開時と同じ `/profile/` 配下のパスで確認できます。
 
 ## GitHub Pages
 
-1. この変更を `main` ブランチへ反映します。
-2. GitHub の Settings → Pages → Build and deployment → Source を **GitHub Actions** にします。
-3. `Deploy profile to GitHub Pages` ワークフローの成功を確認します。
+公開には GitHub Actions を使います（Settings → Pages → Source: GitHub Actions）。
 
-公開予定URL: `https://nagomi-room.github.io/profile/nodoka/`
+`main` に push すると、`Deploy profile to GitHub Pages` ワークフローが動いて公開されます。公開されるのは `index.html`・`assets/`・`nodoka/` だけで、開発用の文書は公開されません。
 
-ルート `https://nagomi-room.github.io/profile/` からも移動できます。独自ドメインやサーバー設定は不要です。公開ファイルは `index.html`・`assets/`・`nodoka/` のみで、開発文書は配信しません。サイトは静的な趣味プロフィールで、解析・Cookie・外部フォント・広告を使用しません。
+解析ツール・Cookie・外部フォント・広告は使っていません。

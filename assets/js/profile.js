@@ -128,7 +128,11 @@
           button("", "内容を確認して表示する", () => {
             item.revealed = true;
             show();
-            frame.querySelector("button").focus();
+            // Disclosure is an explicit request to view: enlarge it right away.
+            // Closing the dialog returns focus to the revealed image.
+            const imageButton = frame.querySelector(".image-button");
+            imageButton.focus();
+            open(item, entries, imageButton);
           }),
         );
         frame.append(cover);

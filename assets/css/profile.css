@@ -175,6 +175,11 @@ button {
   color: var(--rose);
   margin: 0 0 23px;
 }
+.ribbon-emoji {
+  font-size: 40px;
+  line-height: 1;
+  margin: 24px auto 14px;
+}
 .ribbon {
   position: relative;
   width: 72px;
@@ -431,7 +436,6 @@ h1 {
   margin: 0 0 0.4em;
   padding: 14px 18px;
   background: #fbf3f4;
-  border-left: 2px solid #e2c4cb;
 }
 .dot-list li {
   position: relative;
@@ -531,12 +535,14 @@ h1 {
   margin-top: 6px;
 }
 .oshi dt {
-  flex: 0 0 3.4em;
+  flex: 0 0 auto;
+  min-width: 4.4em;
+  white-space: nowrap;
   font: 18px var(--serif);
   color: var(--rose);
 }
 .oshi dt::after {
-  content: " ♡";
+  content: "\00a0♡";
   font-size: 11px;
   color: #c08e9b;
 }

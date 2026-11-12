@@ -1,9 +1,0 @@
-# Used only when GitHub Pages builds from the branch ("Deploy from a branch").
-# Keeps development files out of the published site. The Actions workflow
-# (.github/workflows/pages.yml) copies only index.html, assets/ and nodoka/.
-exclude:
-  - README.md
-  - AGENTS.md
-  - docs/
-  - .github/
-  - _config.yml
