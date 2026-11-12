@@ -444,7 +444,7 @@ h1 {
   left: 0;
   color: var(--rose);
 }
-/* twst / sprk: identical structure and dimensions. */
+/* twst / splk: identical structure and dimensions. */
 .favorites {
   max-width: 1040px;
   display: grid;
@@ -493,7 +493,7 @@ h1 {
   margin: 16px 0 22px;
   overflow-wrap: anywhere;
 }
-.favorite-sprk {
+.favorite-splk {
   background: #fdf8f8;
 }
 .key-visual {

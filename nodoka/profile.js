@@ -41,9 +41,9 @@ window.ProfileGalleries.mount({
       spoiler: true,
     },
   ],
-  sprk: [
+  splk: [
     {
-      src: "images/sprk-profile-screens.webp",
+      src: "images/splk-profile-screens.webp",
       width: 960,
       height: 695,
       alt: "ゲーム内のプロフィール、フォト詳細、スナップ詳細の3画面を並べたスクリーンショット",
@@ -51,7 +51,7 @@ window.ProfileGalleries.mount({
       spoiler: false,
     },
     {
-      src: "images/sprk-personal-story-01.webp",
+      src: "images/splk-personal-story-01.webp",
       width: 381,
       height: 400,
       alt: "ディディの台詞のストーリー画面：「世の中には、才能の差に打ちひしがれ、悲しむ者も多い。」「だからこそ、俺がその者たちすべてを救ってみせよう。」「誰よりも才能を持たない、この俺が！」",
@@ -59,7 +59,7 @@ window.ProfileGalleries.mount({
       spoiler: true,
     },
     {
-      src: "images/sprk-personal-story-02.webp",
+      src: "images/splk-personal-story-02.webp",
       width: 183,
       height: 400,
       alt: "ディディの台詞が縦に並ぶストーリーのログ画面（その1）",
@@ -67,7 +67,7 @@ window.ProfileGalleries.mount({
       spoiler: true,
     },
     {
-      src: "images/sprk-personal-story-03.webp",
+      src: "images/splk-personal-story-03.webp",
       width: 183,
       height: 400,
       alt: "ディディの台詞が縦に並ぶストーリーのログ画面（その2）",

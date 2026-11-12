@@ -16,14 +16,15 @@ lit.link の表示順に沿って、本文の文言はそのまま掲載して�
 | ୨୧ About me ୨୧ | `#about` |
 | ୨୧ Attention ୨୧ | `#attention` |
 | ୨୧ Twisted Wonderland 👑（画像・本文・画像・3枚組） | `#twst` |
-| ୨୧ Sparklink Stars 🪽（画像・本文・画像・3枚組） | `#sprk` |
+| ୨୧ Sparklink Stars 🪽（画像・本文・画像・3枚組） | `#splk` |
 | ୨୧ Other & Lastly ♡（本文・画像） | `#other` |
 | X リンク | ヘッダー・ヒーロー・リンク欄 |
 
 表示上の変更（文言は変更なし）:
 
+- ご本人の依頼（2026-11-12）により、lit.link 原文の「sprk」表記（キャッチフレーズ・About me を含む）をすべて「splk」に変更しています。
 - 𝓛𝓸𝓿𝓮 / 𝓛𝓲𝓴𝓮 は見た目を維持し、読み上げは「Love / Like」にしています。
-- sprk の「パーソナルストーリー履修状況」は開閉式（初期状態は閉じる）にしています。JavaScript なしでも開けます。
+- splk の「パーソナルストーリー履修状況」は開閉式（初期状態は閉じる）にしています。JavaScript なしでも開けます。
 - フレンドIDは lit.link では電話番号リンクとして自動変換されていましたが、プレーンテキストにしています。
 - lit.link の OGP 画像（lit.link が自動生成したもの）は使用していません。
 
@@ -39,9 +40,9 @@ lit.link の表示順に沿って、本文の文言はそのまま掲載して�
 | `twst-union-line.webp` | twst 3枚組 1枚目「ユニオン獲得台詞」 | 400×184 | なし（元ページでも警告なし） |
 | `twst-chapter7-01.webp` | twst 3枚組 2枚目「⚠️7章ネタバレ」 | 400×183 | あり |
 | `twst-chapter7-02.webp` | twst 3枚組 3枚目「⚠️7章ネタバレ」 | 400×183 | あり |
-| `sprk-card.webp` | sprk 見出し下 | 960×548 | なし |
-| `sprk-profile-screens.webp` | sprk 本文下 | 960×695 | なし |
-| `sprk-personal-story-01〜03.webp` | sprk 3枚組「⚠️ﾊﾟｿｽﾄﾈﾀﾊﾞﾚ」 | 381×400 / 183×400 ×2 | あり |
+| `splk-card.webp` | splk 見出し下 | 960×548 | なし |
+| `splk-profile-screens.webp` | splk 本文下 | 960×695 | なし |
+| `splk-personal-story-01〜03.webp` | splk 3枚組「⚠️ﾊﾟｿｽﾄﾈﾀﾊﾞﾚ」 | 381×400 / 183×400 ×2 | あり |
 | `lastly-oshi.webp` | Other & Lastly 下 | 539×960 | なし |
 
 - ネタバレ指定は lit.link の画像ラベルに従っています。「ユニオン獲得台詞」は台詞画像ですが、元ページで警告がないため非表示にしていません。隠したい場合は `nodoka/profile.js` で `spoiler: true` に変更してください。

@@ -35,7 +35,7 @@ window.ProfileGalleries.mount({
     { src: 'images/twst-01.webp', width: 960, height: 540, alt: '画像の説明', caption: '', spoiler: false },
     { src: 'images/twst-dialogue-01.webp', width: 400, height: 183, alt: '表示後に読む画像の説明', warning: '⚠️7章ネタバレ', spoiler: true }
   ],
-  sprk: []
+  splk: []
 });
 ```
 

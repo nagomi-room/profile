@@ -5,7 +5,7 @@
 - Only Nodoka is currently in scope. Do not add trading-account placeholders or links between profiles.
 - Preserve verified source wording. Never infer age, favorites, pairing preferences, interaction rules, or other personal facts.
 - Do not substitute stock, generated, or unrelated pictures for missing account illustrations. Record missing assets in `docs/content-status.md`.
-- Keep twst and sprk equal in heading hierarchy, visual weight, and space.
+- Keep twst and splk equal in heading hierarchy, visual weight, and space.
 - Design for mobile first; check 320px, 390px, tablet, and desktop widths, keyboard access, reduced motion, and JavaScript-disabled behavior.
 - Shared galleries must support native horizontal swiping, buttons, accessible image enlargement, and explicit spoiler disclosure. A concealed spoiler must not expose an image or its descriptive alt text before disclosure.
 - All paths must work under the GitHub Pages repository prefix `/profile/`.
