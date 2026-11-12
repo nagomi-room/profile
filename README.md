@@ -23,21 +23,23 @@ AGENTS.md                  開発方針
 
 ## 本文と画像
 
-現状と不足素材は [docs/content-status.md](docs/content-status.md) を必ず確認してください。既存リトリンの本文・画像は未移行です。プロフィールの個人情報・好み・交流条件は推測で追加していません。
+本文と画像は既存リトリン（https://lit.link/nodoka_twst ）から 2026-11-12 に移行しました。移行内容・画像一覧・未確認事項は [docs/content-status.md](docs/content-status.md) を確認してください。リトリンにない個人情報・好み・交流条件は追加していません。
 
-画像を `nodoka/images/` に置き、`nodoka/profile.js` の配列に追加します。
+本文は `nodoka/index.html` を直接編集します。単独の画像は `<a class="zoom" href="images/…" data-zoom><img …></a>` の形で置くと、JavaScript 有効時は拡大ダイアログ、無効時は画像ファイルへのリンクになります。
+
+ギャラリー画像は `nodoka/images/` に置き、`nodoka/profile.js` の配列に追加します。
 
 ```js
 window.ProfileGalleries.mount({
   twst: [
-    { src: 'images/twst-01.webp', alt: '確認済み画像の説明', caption: '', spoiler: false },
-    { src: 'images/twst-dialogue-01.webp', alt: '表示後に読む画像の説明', caption: '', spoiler: true }
+    { src: 'images/twst-01.webp', width: 960, height: 540, alt: '画像の説明', caption: '', spoiler: false },
+    { src: 'images/twst-dialogue-01.webp', width: 400, height: 183, alt: '表示後に読む画像の説明', warning: '⚠️7章ネタバレ', spoiler: true }
   ],
-  sprk: []
+  splk: []
 });
 ```
 
-セリフ・ストーリー画像は `spoiler: true` とします。初期状態では画像要素を作成せず、説明文・拡大表示にも内容を出しません。明示的に表示した画像だけを拡大の前後操作に含めます。「隠す」またはページ再読み込みで非表示に戻ります。画像は適切な WebP/JPEG/PNG に圧縮し、用途に応じて横幅 1200–1800px 程度を目安にしてください。確認していない代替画像は使いません。
+セリフ・ストーリー画像は `spoiler: true` とし、`warning` に内容を含まない警告ラベル（例：⚠️7章ネタバレ）を入れます。初期状態では画像要素を作成せず、説明文・拡大表示にも内容を出しません。明示的に表示した画像だけを拡大の前後操作に含めます。「隠す」またはページ再読み込みで非表示に戻ります。画像は適切な WebP/JPEG/PNG に圧縮し、用途に応じて横幅 1200–1800px 程度を目安にしてください。確認していない代替画像は使いません。
 
 JavaScript が無効でも本文とリンクは読めます。ギャラリーは JavaScript が必要です。ダイアログ非対応ブラウザーでは画像を新しいタブで開きます。
 
